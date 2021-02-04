@@ -1,4 +1,5 @@
 import './App.css';
+import React,{useState,useEffect} from 'react';
 import { 
     BrowserRouter as Router, 
     Route, 
@@ -6,27 +7,40 @@ import {
     Switch,
     BrowserRouter
 } from 'react-router-dom'; 
-import Login from './components/login';
-import Signup from './components/Signup';
+import Login from './components/Login/login';
+import Signup from './components/SignUp/Signup';
 
 function App() {
+const [home,setHome]=useState(true);
+useEffect(()=>{
+  if(window.location.pathname!=="/"){
+    setHome(false);
+ }
+})
+const handler=()=>{
+  if(window.location.pathname!=="/"){
+    setHome(false);
+ }
+}
+
   return (
     <div >
        <Router> 
            <div className="button"> 
-                <Link to="/"><button className="btn btn-primary">Home</button></Link> 
+           {home?<>
+                <Link to="/"><button className="btn btn-primary" onClick={handler}>Home</button></Link> 
             
-                <Link to="/login"><button className="btn btn-primary">Login</button></Link>
+                <Link to="/login"><button className="btn btn-primary" onClick={handler}>Login</button></Link>
             
-                <Link to="/Signup"><button className="btn btn-warning">Sign Up</button></Link> 
-           
+                <Link to="/Signup"><button className="btn btn-warning" onClick={handler}>Sign Up</button></Link> </>
+           :null}
             <Switch> 
               <Route exact path='/login' component={Login}></Route> 
               <Route exact path='/Signup' component={Signup}></Route> 
             </Switch> 
           </div> 
        </Router> 
-
+      
      
     </div>
   );
