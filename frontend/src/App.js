@@ -5,7 +5,6 @@ import {
     Route, 
     Link, 
     Switch,
-    BrowserRouter
 } from 'react-router-dom'; 
 import Login from './components/Login/login';
 import Signup from './components/SignUp/Signup';
@@ -16,7 +15,7 @@ useEffect(()=>{
   if(window.location.pathname!=="/"){
     setHome(false);
  }
-})
+},[home])
 const handler=()=>{
   if(window.location.pathname!=="/"){
     setHome(false);

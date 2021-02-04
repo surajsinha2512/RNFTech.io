@@ -32,7 +32,7 @@ import axios from 'axios';
   
     console.log(email, password)
     if (validate()) {
-      // api call
+      // post Request
       axios.post('http://localhost:9999/login', {
         email,
         password
@@ -41,7 +41,6 @@ import axios from 'axios';
           console.log(response)
           if (response.status === 200) {
             window.localStorage.setItem('login', JSON.stringify(response.data))
-            this.props.history.push('/dashboard')
           }
         })
         .catch((error) => {
@@ -65,7 +64,6 @@ import axios from 'axios';
           <input type='password' name='password' value={password} onChange={handleOnChange} />
         </div>
         <div className='form-field'>
-          <button onClick={() => this.props.history.push('/signup')} className='right-adjust'>Sign Up</button>
           <button onClick={handleSubmit}>Submit</button>
         </div>
       </div>

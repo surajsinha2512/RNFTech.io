@@ -47,8 +47,11 @@ function Signup(){
     if (validate) {
       // api call
       axios.post('http://localhost:9999/signup', {
-        email,
-        password
+       firstName,
+       lastName,
+       bio,
+       email,
+       password
       })
         .then(function (response) {
           console.log(response)
