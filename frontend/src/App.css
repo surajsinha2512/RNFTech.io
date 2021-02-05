@@ -37,7 +37,12 @@
   }
 }
 
-.button{
+
+.divide{
   display:flex;
-  flex:auto;
+  margin:20px;
+  justify-content: stretch;
+}
+.btn{
+  margin:10px;
 }

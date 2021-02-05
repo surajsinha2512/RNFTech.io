@@ -25,8 +25,10 @@ const handler=()=>{
 
   return (
     <div >
+   
        <Router> 
            <div className="button"> 
+           <div className="divide">
            {home?<>
                 <Link to="/home"><button className="btn btn-primary" onClick={handler}>Home</button></Link> 
             
@@ -34,6 +36,7 @@ const handler=()=>{
             
                 <Link to="/Signup"><button className="btn btn-warning" onClick={handler}>Sign Up</button></Link> </>
            :null}
+           </div>
             <Switch> 
               <Route exact path='/login' component={Login}></Route> 
               <Route exact path='/Signup' component={Signup}></Route>

@@ -1,6 +1,6 @@
 .form-field {
     margin: 10px 0;
-    background-image:linear-gradient(rgb(255,255,255),rgb(30, 180, 110))
+  
   }
   
   #sign-up {
@@ -13,11 +13,7 @@
   }
 
 
-  #sign-up{
-   
-    background-image:linear-gradient(rgb(255,255,255),rgb(56, 16, 199))
-  
-  }
+
   .inner{
     padding:50px;
     box-shadow: 10px 10px 5px grey;
