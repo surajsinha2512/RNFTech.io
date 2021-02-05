@@ -66,6 +66,7 @@ function Signup(){
       <div id='sign-up'>
         {/* first Name */}
         <div><h1>Sign Up</h1></div>
+        <div className="inner">
         <div className='form-field'>
           <div>First Name:</div>
           <input type='text' name='firstName' value={firstName} onChange={handleOnChange} />
@@ -92,7 +93,8 @@ function Signup(){
         </div>
        
         <div className='form-field'>
-          <button onClick={handleSubmit}>Submit</button>
+          <button className="btn btn-danger" onClick={handleSubmit}>Submit</button>
+        </div>
         </div>
       </div>
     )

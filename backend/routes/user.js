@@ -71,8 +71,15 @@ router.post('/signup', async (req, res) => {
 
 
 router.get('/home', async (req, res) => {
-    
-  try {
+  /// Retrieving all the user present in the database 
+   User.find({},(err,user)=>{
+       if(err){
+           res.send("error");
+
+       }
+       res.json(user);
+   })
+ /* try {
     // reading the data from user
     // const id = req.query.id
     // console.log(id)
@@ -86,6 +93,7 @@ router.get('/home', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
+  */
 })
 
 

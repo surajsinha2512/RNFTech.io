@@ -50,9 +50,10 @@ import axios from 'axios';
 
 
     return (
-      <div id='sign-in'>
+      <div id='sign-in' className="outer">
         <div><h1>Sign In</h1></div>
         {/* email */}
+        <div className="inner">
         <div className='form-field'>
           <div>Email*:</div>
           <input type='text' name='email' value={email} onChange={handleOnChange} />
@@ -63,7 +64,8 @@ import axios from 'axios';
           <input type='password' name='password' value={password} onChange={handleOnChange} />
         </div>
         <div className='form-field'>
-          <button onClick={handleSubmit}>Submit</button>
+          <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+        </div>
         </div>
       </div>
     )
