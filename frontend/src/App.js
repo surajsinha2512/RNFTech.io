@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'; 
 import Login from './components/Login/login';
 import Signup from './components/SignUp/Signup';
+import Home from './components/Home/Home';
 
 function App() {
 const [home,setHome]=useState(true);
@@ -27,7 +28,7 @@ const handler=()=>{
        <Router> 
            <div className="button"> 
            {home?<>
-                <Link to="/"><button className="btn btn-primary" onClick={handler}>Home</button></Link> 
+                <Link to="/home"><button className="btn btn-primary" onClick={handler}>Home</button></Link> 
             
                 <Link to="/login"><button className="btn btn-primary" onClick={handler}>Login</button></Link>
             
@@ -35,7 +36,8 @@ const handler=()=>{
            :null}
             <Switch> 
               <Route exact path='/login' component={Login}></Route> 
-              <Route exact path='/Signup' component={Signup}></Route> 
+              <Route exact path='/Signup' component={Signup}></Route>
+              <Route exact path='/home' component={Home}></Route>
             </Switch> 
           </div> 
        </Router> 

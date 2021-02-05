@@ -92,7 +92,6 @@ function Signup(){
         </div>
        
         <div className='form-field'>
-          <button onClick={() => this.props.history.push('/')} className='right-adjust'>Sign In</button>
           <button onClick={handleSubmit}>Submit</button>
         </div>
       </div>

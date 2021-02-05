@@ -9,7 +9,7 @@ router.post('/signup', async (req, res) => {
         console.log("end points are working ")
       // reading the data from user
       const { firstName,lastName,bio,email, password } = req.body
-      const existingUser = await User.findOne({ email: email })
+      const existingUser = await User.findOne({ mail: email })
       if (existingUser) {
         return res
           .status(400)
@@ -27,7 +27,6 @@ router.post('/signup', async (req, res) => {
         mail: email,
         psw: passwordHash
       })
-      console.log('newUser')
       console.log(newUser)
       const savedUser = await newUser.save()
       res.json(savedUser)
@@ -47,13 +46,13 @@ router.post('/signup', async (req, res) => {
       console.log("login end Point")
       const { email, password } = req.body
       // whether the user is already
-      const user = await User.findOne({ email: email })
+      const user = await User.findOne({ mail: email })
       if (!user) {
         return res
           .status(400)
           .json({ msg: 'User account does not exists' })
       }
-      const isMatch = await bcrypt.compare(password, user.password)
+      const isMatch = await bcrypt.compare(password, user.psw)
       if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials' })
       // encryption is happening to the token
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
@@ -71,16 +70,18 @@ router.post('/signup', async (req, res) => {
 
 
 
-router.get('/', auth, async (req, res) => {
+router.get('/home', async (req, res) => {
+    
   try {
     // reading the data from user
     // const id = req.query.id
     // console.log(id)
     const user = await User.findById(req.user)
+  
     res.json({
       id: user._id,
-      email: user.email,
-      password: user.password
+      email: user.mail,
+      password: user.psw
     })
   } catch (err) {
     res.status(500).json({ error: err.message })
