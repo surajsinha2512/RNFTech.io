@@ -3,11 +3,10 @@ import './Login.css';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
-
   function Login(){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
-  const [temp,setTemp]=useState(true);
+  const [temp,setTemp]=useState(false);
   const handleOnChange= (e)=> {
    if(e.target.name==="email"){
    setEmail(e.target.value);
@@ -42,13 +41,7 @@ import {Redirect} from 'react-router-dom';
           console.log(response)
           if (response.status === 200) {
             window.localStorage.setItem('login', JSON.stringify(response.data))
-           
-          }
-        }).then(()=>{
-          setTemp(true)
-          if(temp){
-            console.log("redirection")
-            return  <Redirect to="/home/"/>
+           setTemp(true)
           }
         })
         .catch((error) => {
@@ -58,7 +51,10 @@ import {Redirect} from 'react-router-dom';
   }
 
 
-    return (
+    return (<>
+   
+      { temp ? (<Redirect push to="/home"/>) : null }        
+     
       <div id='sign-in' className="outer">
         <div><h1>Sign In</h1></div>
         {/* email */}
@@ -77,6 +73,7 @@ import {Redirect} from 'react-router-dom';
         </div>
         </div>
       </div>
+      </>
     )
   }
 

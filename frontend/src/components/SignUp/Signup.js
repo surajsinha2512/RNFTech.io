@@ -58,9 +58,7 @@ function Signup(){
         .then(function (response) {
           console.log(response)
           setSuccess(true);
-          if(success===true){
-            return  <Redirect  to="/home" />
-          }
+         
 
         })
         .catch(function (error) {
@@ -70,6 +68,8 @@ function Signup(){
   }
 
     return (
+      <>
+       { success ? (<Redirect push to="/home"/>) : null }        
       <div id='sign-up'>
         {/* first Name */}
         <div><h1>Sign Up</h1></div>
@@ -104,6 +104,7 @@ function Signup(){
         </div>
         </div>
       </div>
+      </>
     )
 }
 

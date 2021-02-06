@@ -2,7 +2,9 @@ import React, { useState,useEffect } from 'react'
 import './Home.css';
 import axios from 'axios';
 import Cards from '../card/card';
-  function Home(){
+
+
+  function Home({history}){
     const [loading,setLoading]=useState(false);
    const [user,setUser]=useState([]);
    let val=[];
@@ -29,7 +31,9 @@ import Cards from '../card/card';
    }
   useEffect(()=>{
       // get Request for all the user available in the databases 
-    
+      if(!window.localStorage.getItem('login')){
+        history.push('/login')
+      }
     handler()
     
   },[])
@@ -42,11 +46,13 @@ import Cards from '../card/card';
       </div>
         {loading?<h1>Loading</h1>:user.map((data,index)=>{
           return(
-              <>
-              <div className="list" key={index}>
+               <div className="list">
+             
+               <div key={index}>
               <Cards firstName={data.fName} lastName={data.lName} bio={data.b} email={data.mail}/>
               </div>
-              </>
+            
+              </div>
           )
         })}
       </div>

@@ -92,6 +92,7 @@ router.post('/send', async (req, res) => {
     const { email } = req.body
     
     const user = await User.findOne({ mail: email })
+    
     res.json(user)
   } catch (err) {
     res.status(500).json({ err: err.message })
@@ -104,7 +105,7 @@ router.post('/accept', async (req, res) => {
     const { email } = req.body
     
     const user = await User.findOne({ mail: email })
-  
+    /// findByIdAndUpdate(mail:email,{...request,userEmail})   
     res.json(user)
 
   } catch (err) {
