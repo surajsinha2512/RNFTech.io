@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import './Login.css';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
+
 
   function Login(){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
-
+  const [temp,setTemp]=useState(true);
   const handleOnChange= (e)=> {
    if(e.target.name==="email"){
    setEmail(e.target.value);
@@ -40,6 +42,13 @@ import axios from 'axios';
           console.log(response)
           if (response.status === 200) {
             window.localStorage.setItem('login', JSON.stringify(response.data))
+           
+          }
+        }).then(()=>{
+          setTemp(true)
+          if(temp){
+            console.log("redirection")
+            return  <Redirect to="/home/"/>
           }
         })
         .catch((error) => {

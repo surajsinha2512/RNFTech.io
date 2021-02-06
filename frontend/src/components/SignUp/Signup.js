@@ -1,6 +1,7 @@
-import React, { useState} from 'react'
-import './SignUp.css'
-import axios from 'axios'
+import React, { useState} from 'react';
+import {Redirect} from 'react-router-dom';
+import './SignUp.css';
+import axios from 'axios';
 
 
 function Signup(){
@@ -9,6 +10,7 @@ function Signup(){
   const [bio,setBio]=useState('');
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
+  const [success,setSuccess]=useState(false);
 
   const handleOnChange= (e)=> {
     //console.log(e.target.name, e.target.value)
@@ -55,6 +57,11 @@ function Signup(){
       })
         .then(function (response) {
           console.log(response)
+          setSuccess(true);
+          if(success===true){
+            return  <Redirect  to="/home" />
+          }
+
         })
         .catch(function (error) {
           console.log(error)

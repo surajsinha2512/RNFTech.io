@@ -37,7 +37,7 @@ const acceptRequest=()=>{
 }
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', margin:"10px"}}>
     <Card.Body>
       <Card.Title> {`${props.firstName} ${props.lastName}`}</Card.Title>
       <Card.Text>
