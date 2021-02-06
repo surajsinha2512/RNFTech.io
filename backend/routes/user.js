@@ -75,26 +75,45 @@ router.get('/home', async (req, res) => {
    User.find({},(err,user)=>{
        if(err){
            res.send("error");
-
        }
        res.json(user);
    })
- /* try {
-    // reading the data from user
-    // const id = req.query.id
-    // console.log(id)
-    const user = await User.findById(req.user)
-  
-    res.json({
-      id: user._id,
-      email: user.mail,
-      password: user.psw
-    })
-  } catch (err) {
-    res.status(500).json({ error: err.message })
-  }
-  */
+
 })
+
+
+
+
+
+
+router.post('/send', async (req, res) => {
+  try {
+    // reading the data from the user
+    const { email } = req.body
+    
+    const user = await User.findOne({ mail: email })
+    res.json(user)
+  } catch (err) {
+    res.status(500).json({ err: err.message })
+  }
+})
+
+router.post('/accept', async (req, res) => {
+  try {
+    // reading the data from the user
+    const { email } = req.body
+    
+    const user = await User.findOne({ mail: email })
+  
+    res.json(user)
+
+  } catch (err) {
+    res.status(500).json({ err: err.message })
+  }
+})
+
+
+
 
 
 module.exports = router

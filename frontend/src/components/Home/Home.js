@@ -12,7 +12,7 @@ import Cards from '../card/card';
     .then((response) => {
       setLoading(true)
       response.data.map((l)=>{
-        console.log(l.fName)
+        console.log(l)
        
         val.push(l);
         setUser([...val]);
@@ -44,7 +44,7 @@ import Cards from '../card/card';
           return(
               <>
               <div className="list" key={index}>
-              <Cards firstName={data.fName} lastName={data.lName}/>
+              <Cards firstName={data.fName} lastName={data.lName} bio={data.b} email={data.mail}/>
               </div>
               </>
           )
